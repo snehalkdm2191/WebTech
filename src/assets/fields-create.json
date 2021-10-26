@@ -1,0 +1,42 @@
+[
+  {
+    "key": "title",
+    "label": "Title",
+    "placeholder": "Course title",
+    "type": "text",
+    "mode": "create",
+    "required": true
+  },
+  {
+    "key": "imageURL",
+    "label": "Image link",
+    "placeholder": "http://www.unsplash.com/someimage.png",
+    "type": "text",
+    "mode": "create",
+    "required": true
+  },
+  {
+    "key": "description",
+    "label": "Description",
+    "placeholder": "Short description",
+    "type": "text",
+    "mode": "create",
+    "required": true
+  },
+  {
+    "key": "content",
+    "label": "Course content",
+    "placeholder": "Course content",
+    "type": "text",
+    "mode": "create",
+    "required": true
+  },
+  {
+    "key": "links",
+    "label": "Link",
+    "placeholder": "http://www.youtube.com/...",
+    "type": "text",
+    "mode": "create",
+    "required": false
+  }
+]
