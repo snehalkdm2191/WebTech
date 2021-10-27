@@ -1,10 +1,7 @@
 import { useState } from "react";
-import useFetch from "../hooks/useFetch";
+import useFetch from "../scripts/useFetch";
 import { useUsers } from "../state/UsersProvider";
 import { deleteDocument } from "../scripts/fireStore";
-import Spinner from "./shared/Spinner";
-import BoxError from "./shared/BoxError";
-import kickout from "../assets/icns/kickout.png";
 
 export default function StudentList() {
   const { dispatchUsers } = useUsers();
@@ -31,7 +28,6 @@ export default function StudentList() {
           className="btn btn-delete"
           onClick={(event) => handleDelete(event, "users", item.id)}
         >
-          <img src={kickout} alt="out" />
           <h4>kick out</h4>
         </button>
       </li>
@@ -39,8 +35,6 @@ export default function StudentList() {
   });
   return (
     <>
-      {users.loading === true && <Spinner />}{" "}
-      {users.error !== null && <BoxError />}
       {(!users.loading && users.error) === null && (
         <>
           <ul className="students">{Students}</ul>

@@ -4,12 +4,9 @@ import { useParams, Link } from "react-router-dom";
 
 //Local imports
 import { useCourses } from "../state/CoursesProvider";
-import { useAuth } from "../state/AuthProvider";
 import useFetch from "../scripts/useFetch";
 
 export default function Course() {
-  // Global State
-  const { user } = useAuth();
   //Local state
   const { id } = useParams();
   const { dispatchCourses } = useCourses();

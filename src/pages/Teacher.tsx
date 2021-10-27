@@ -6,7 +6,6 @@ import { useState } from "react";
 import Modal from "../components/Modal";
 
 export default function Teacher() {
-  // Global state
 
   //Local state
   const [selection, setSelection] = useState("courses");

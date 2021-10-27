@@ -1,52 +1,43 @@
-import React, { useEffect, useState } from 'react';
-import { Route, RouteComponentProps, Switch } from 'react-router-dom';
-import { Spinner } from 'reactstrap';
-import AuthRoute from './components/AuthRoute';
-import { auth } from './config/firebase';
-import logging from './config/logging';
-import routes from './config/routes';
-import useFetch from "./scripts/useFetch";
-import { useCourses } from "./state/CoursesProvider";
-
-export interface IApplicationProps { }
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Switch } from "react-router-dom";
+import { Spinner } from "reactstrap";
+import { auth } from "./config/firebase";
+import logging from "./config/logging";
+import Logged from "./routes/Logged";
+import Unlogged from "./routes/Unlogged";
+import { useUsers } from "./state/UsersProvider";
+import { getDocument } from "./scripts/fireStore";
 
 export default function App() {
-    const [loading, setLoading] = useState<boolean>(true);
+  const { user, setUser, setIsLogged }: any = useUsers();
+  const { isLogged }:any = useUsers();
+  const [loading, setLoading] = useState<boolean>(true);
 
-    useEffect(() => {
-        auth.onAuthStateChanged(user => {
-            if (user)
-            {
-                logging.info('User detected.');
-            }
-            else
-            {
-                logging.info('No user detected');
-            }
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        logging.info("User detected.");
+        onSuccess(user.uid)
+      } else logging.info("No user detected");
 
-            setLoading(false);
-        })
-    }, []);
+      setLoading(false);
+    });
+  }, []);
 
-    if (loading)
-        return <Spinner color="info" />
+  async function onSuccess(uid: string) {
+    const document = await getDocument("users", uid);
+    setUser(document);
+    console.log("document",document);
+    setIsLogged(true);
+  }
 
-    return (
-        <div>
-            <Switch>
-                {routes.map((route, index) => 
-                    <Route
-                        key={index}
-                        path={route.path} 
-                        exact={route.exact} 
-                        render={(routeProps: RouteComponentProps<any>) => {
-                            if (route.protected)
-                                return <AuthRoute><route.component  {...routeProps} /></AuthRoute>;
+  if (loading) return <Spinner color="info" />;
 
-                            return <route.component  {...routeProps} />;
-                        }}
-                    />)}
-            </Switch>
-        </div>
-    );
+  return (
+    <div>
+      <BrowserRouter>
+        <Switch>{isLogged ? <Logged /> : <Unlogged />}</Switch>
+      </BrowserRouter>
+    </div>
+  );
 }

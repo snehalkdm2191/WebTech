@@ -5,14 +5,11 @@ import { Link } from "react-router-dom";
 //Local imports
 import Modal from "./Modal";
 import { deleteDocument } from "../scripts/fireStore";
-import { useAuth } from "../state/AuthProvider";
 
 interface MyProps {
   data: object;
 }
 const Card: FC<MyProps> = ({ data }) => {
-  // Global state
-  const { user } = useAuth();
   //Local state
   const [isOpen, setIsOpen] = useState(false);
 
@@ -24,6 +21,7 @@ const Card: FC<MyProps> = ({ data }) => {
       alert("Course deleted");
     }
   }
+  console.log("user.role", user.role);
 
   return (
     <div className="card">

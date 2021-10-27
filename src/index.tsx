@@ -2,21 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
-import { AuthProvider } from "./state/AuthProvider";
 import { CoursesProvider } from "./state/CoursesProvider";
-import { UsersProvider } from "./state/UsersProvider";
+import { UserProvider } from "./state/UsersProvider";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <AuthProvider>
         <CoursesProvider>
-          <UsersProvider>
+          <UserProvider>
             <App />
-          </UsersProvider>
+          </UserProvider>
         </CoursesProvider>
-      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

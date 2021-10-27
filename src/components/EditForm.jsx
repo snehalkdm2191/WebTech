@@ -5,9 +5,11 @@ import { useHistory } from "react-router-dom";
 //Local imports
 import fields from "../assets/fields-edit.json";
 import InputField from "../components/InputField";
+import { useCourses } from "../state/CoursesProvider";
 import { updateDocument } from "../scripts/fireStore";
 
 export default function EditForm({ onClose, data }) {
+  const { dispatchCourses } = useCourses();
   //Local states
   const [form, setForm] = useState(data);
   const [errorMessage, setErrorMessage] = useState("");
@@ -25,6 +27,7 @@ export default function EditForm({ onClose, data }) {
     setErrorMessage("");
     const newCourse = { ...form };
     await updateDocument("courses", newCourse.id, newCourse);
+    dispatchCourses({ type: "UPDATE_COURSE", payload: form });
     alert("Course updated");
     onClose();
     history.push("/");

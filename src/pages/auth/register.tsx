@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import ErrorText from "../../components/ErrorText";
 import { auth, Providers } from "../../config/firebase";
-import { createDoc } from "../../scripts/fireStore";
+import { createDocumentWithId } from "../../scripts/fireStore";
 import logging from "../../config/logging";
 import IPageProps from "../../interfaces/page";
 
@@ -34,7 +34,7 @@ const RegisterPage: React.FunctionComponent<IPageProps> = (props) => {
           role: "Student",
           imageURL: ""
         };
-        createDoc("users", newUser);
+        createDocumentWithId("users",result.user.uid, newUser);
         history.push("/login");
       })
       .catch((error) => {
