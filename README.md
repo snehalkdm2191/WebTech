@@ -57,7 +57,7 @@ The document submited by the fictional company as the coding test. It is highlig
 
 A spreadsheet with the information related to the organization of the project.
 
-[Google Spreadsheets link]()
+[Google Spreadsheets link](https://docs.google.com/spreadsheets/d/1cDoOwR4ogKfjStKctZgvvvEIeqdlLTS9WyN5K0TXpAU/edit#gid=0)
 
 ---
 
