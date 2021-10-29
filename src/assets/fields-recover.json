@@ -1,8 +1,0 @@
-[
-  {
-    "key": "email",
-    "label": "Email",
-    "placeholder": "youremail@provider.com",
-    "type": "email"
-  }
-]

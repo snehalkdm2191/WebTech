@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 //Local imports
-import fields from "../assets/fields-edit.json";
+import fields from "../data/fields-edit.json";
 import InputField from "../components/InputField";
 import { useCourses } from "../state/CoursesProvider";
 import { updateDocument } from "../scripts/fireStore";

@@ -7,7 +7,6 @@ import HomePage from "../pages/home";
 import Teacher from "../pages/Teacher";
 import Student from "../pages/Student";
 import Course from "../pages/Course";
-import NewCourse from "../components/NewCourse";
 import LoginPage from "../pages/auth/loginMainPage";
 import LogoutPage from "../pages/auth/logout";
 
