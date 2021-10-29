@@ -47,7 +47,7 @@ export default function EditForm({ onClose, data }) {
     <form className="course-form" onSubmit={onSubmit}>
       {Fields}
       <p>{errorMessage}</p>
-      <button className="btn btn-main btn-140">
+      <button className="btn btn-course-modal">
         <h4>Submit</h4>
       </button>
     </form>

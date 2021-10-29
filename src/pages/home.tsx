@@ -11,7 +11,7 @@ export default function home() {
         <VideoPlayer/>
 
         <div className="bloc">
-          <Link className="btn btn-light btn-signup" to="/register">
+          <Link className="btn btn-light btn-signup" to="/login">
             <h3>signup</h3>
           </Link>
           <Link className="btn btn-light btn-home-login" to="/login">
