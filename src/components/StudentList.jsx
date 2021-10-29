@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import useFetch from "../scripts/useFetch";
 import { useUsers } from "../state/UsersProvider";
 import { deleteDocument } from "../scripts/fireStore";
@@ -6,6 +6,8 @@ import { deleteDocument } from "../scripts/fireStore";
 export default function StudentList() {
   const { dispatchUsers } = useUsers();
   const users = useFetch("users", dispatchUsers);
+
+  const history = useHistory();
 
   const students = users.data.filter((item) => {
     return item.role === "student";
@@ -16,29 +18,39 @@ export default function StudentList() {
     if (window.confirm("Are you sure ?")) {
       await deleteDocument(path, id);
       alert("Student deleted");
+      history.push("/main");
     }
   }
 
   // Components
   const Students = students.map((item) => {
     return (
-      <li key={item.id} className="student-card">
-        <h3>{item.username}</h3>
-        <button
-          className="btn btn-delete"
-          onClick={(event) => handleDelete(event, "users", item.id)}
-        >
-          <h4>kick out</h4>
-        </button>
-      </li>
+      <tbody key={item.id}>
+        <tr>
+          <td>{item.name}</td>
+          <td>{item.email}</td>
+          <td>
+            <button className="btn-student-delete" onClick={(event) => handleDelete(event, "users", item.id)}>
+            <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
     );
   });
   return (
     <>
       {(!users.loading && users.error) === null && (
-        <>
-          <ul className="students">{Students}</ul>
-        </>
+        <table class="table student-list-table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Email id</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          {Students}
+        </table>
       )}
     </>
   );

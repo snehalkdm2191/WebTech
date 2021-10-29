@@ -37,7 +37,7 @@ export default function CreateForm({ onClose }) {
     dispatchCourses({ type: "CREATE_COURSE", payload: form });
     alert("Course created");
     onClose();
-    history.push("/");
+    history.push("/main");
   }
 
   //Components
@@ -51,10 +51,10 @@ export default function CreateForm({ onClose }) {
   ));
 
   return (
-    <form onSubmit={onSubmit}>
+    <form className="course-form" onSubmit={onSubmit}>
       {Fields}
       <p>{errorMessage}</p>
-      <button className="btn btn-main btn-140">
+      <button className="btn btn-course-modal">
         <h4>Submit</h4>
       </button>
     </form>

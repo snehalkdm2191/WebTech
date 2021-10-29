@@ -4,12 +4,15 @@ import { FC, useState } from "react";
 import { Link } from "react-router-dom";
 //Local imports
 import Modal from "./Modal";
+import { useUsers } from "../state/UsersProvider";
 import { deleteDocument } from "../scripts/fireStore";
+import blankImg from "../assets/img/image-placeholder.png";
 
 interface MyProps {
   data: object;
 }
 const Card: FC<MyProps> = ({ data }) => {
+  const { user }: any = useUsers();
   //Local state
   const [isOpen, setIsOpen] = useState(false);
 
@@ -21,10 +24,9 @@ const Card: FC<MyProps> = ({ data }) => {
       alert("Course deleted");
     }
   }
-  console.log("user.role", user.role);
 
   return (
-    <div className="card">
+    <div className="col-md-3 col-sm-6">
       {user.role === "teacher" && (
         <Modal
           type="edit"
@@ -35,29 +37,44 @@ const Card: FC<MyProps> = ({ data }) => {
           Edit course
         </Modal>
       )}
-
-      <h2 className="title">{data.title}</h2>
-      <p className="description">{data.description}</p>
-      <img src={data.imageURL} alt="img" />
-
-      <div className="menu">
-        {user.role === "teacher" && (
-          <>
-            <button onClick={() => setIsOpen(true)}>
-              <h3>Edit</h3>
-            </button>
-            <button
-              className="btn"
-              onClick={(event) => handleDelete(event, "courses", data.id)}
-            >
-              <h3>Delete</h3>
-            </button>
-          </>
-        )}
-
-        <Link to={"/courses/" + data.id}>
-          <h3>View Course</h3>
-        </Link>
+      <div className="course-grid4">
+        <div className="course-image4">
+          <a href={data.imageURL}>
+            {data.imageURL === "" ? (
+              <>
+                <img className="pic-1" src={blankImg} alt="" />
+                <img className="pic-2" src={blankImg} alt="" />
+              </>
+            ) : (
+              <>
+                <img className="pic-1" src={data.imageURL} alt="" />
+                <img className="pic-2" src={data.imageURL} alt="" />
+              </>
+            )}
+          </a>
+          <span className="course-new-label">{data.title}</span>
+        </div>
+        <div className="course-content">
+          <Link className="btn btn-course-view" to={"/courses/" + data.id}>
+            <h6><i class="fas fa-binoculars"></i></h6>
+          </Link>
+          {user.role === "teacher" && (
+            <>
+              <button
+                className="btn btn-course-edit"
+                onClick={() => setIsOpen(true)}
+              >
+                <h6><i class="fas fa-edit"></i></h6>
+              </button>
+              <button
+                className="btn btn-course-delete"
+                onClick={(event) => handleDelete(event, "courses", data.id)}
+              >
+                <h6><i class="fas fa-trash-alt"></i></h6>
+              </button>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

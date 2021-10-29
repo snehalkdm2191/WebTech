@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import ErrorText from "../../components/ErrorText";
 import { auth, Providers } from "../../config/firebase";
 import { createDocumentWithId } from "../../scripts/fireStore";
 import logging from "../../config/logging";
-import IPageProps from "../../interfaces/page";
 
-const RegisterPage: React.FunctionComponent<IPageProps> = (props) => {
+export default function RegisterPage(){
   const [registering, setRegistering] = useState<boolean>(false);
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -31,7 +30,7 @@ const RegisterPage: React.FunctionComponent<IPageProps> = (props) => {
         const newUser = {
           name: name,
           email: email,
-          role: "Student",
+          role: "student",
           imageURL: ""
         };
         createDocumentWithId("users",result.user.uid, newUser);
@@ -52,50 +51,59 @@ const RegisterPage: React.FunctionComponent<IPageProps> = (props) => {
   };
 
   return (
-    <div id="Register">
+    <div className="sign-up-form">
       <div className="form-group">
+      <label htmlFor="name">Name</label>
         <input
           type="name"
           name="name"
           id="name"
+          className="form-control"
           placeholder="name"
           onChange={(event) => setName(event.target.value)}
           value={name}
         />
       </div>
       <div className="form-group">
+      <label htmlFor="email">Email id</label>
         <input
           type="email"
           name="email"
           id="email"
+          className="form-control"
           placeholder="Email Address"
           onChange={(event) => setEmail(event.target.value)}
           value={email}
         />
       </div>
       <div className="form-group">
+      <label htmlFor="password">Password</label>
         <input
           autoComplete="new-password"
           type="password"
           name="password"
           id="password"
+          className="form-control"
           placeholder="Enter Password"
           onChange={(event) => setPassword(event.target.value)}
           value={password}
         />
       </div>
       <div className="form-group">
+      <label htmlFor="confirm">Confirm Password</label>
         <input
           autoComplete="new-password"
           type="password"
           name="confirm"
           id="confirm"
+          className="form-control"
           placeholder="Confirm Password"
           onChange={(event) => setConfirm(event.target.value)}
           value={confirm}
         />
       </div>
       <button
+        className="btn btn-dark btn-register"
         disabled={registering}
         color="success"
         onClick={() => signUpWithEmailAndPassword()}
@@ -111,5 +119,3 @@ const RegisterPage: React.FunctionComponent<IPageProps> = (props) => {
     </div>
   );
 };
-
-export default RegisterPage;

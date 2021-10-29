@@ -11,6 +11,7 @@ export default function useFetch(collection, dispatch) {
   // Methods
   async function fetchData(someDatabase, someCollection) {
     try {
+      console.log("someCollection", someCollection);
       const response = await getCollection(someDatabase, someCollection);
       dispatch({ type: "SET_DATA", payload: someCollection });
       setData(response);

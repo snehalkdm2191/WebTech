@@ -30,7 +30,7 @@ export default function EditForm({ onClose, data }) {
     dispatchCourses({ type: "UPDATE_COURSE", payload: form });
     alert("Course updated");
     onClose();
-    history.push("/");
+    history.push("/main");
   }
 
   //Components
@@ -44,7 +44,7 @@ export default function EditForm({ onClose, data }) {
   ));
 
   return (
-    <form onSubmit={onSubmit}>
+    <form className="course-form" onSubmit={onSubmit}>
       {Fields}
       <p>{errorMessage}</p>
       <button className="btn btn-main btn-140">

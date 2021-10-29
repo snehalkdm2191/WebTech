@@ -3,9 +3,8 @@ import { Redirect, useHistory } from "react-router-dom";
 import ErrorText from "../../components/ErrorText";
 import { auth, Providers } from "../../config/firebase";
 import logging from "../../config/logging";
-import IPageProps from "../../interfaces/page";
 
-const ChangePasswordPage: React.FunctionComponent<IPageProps> = (props) => {
+export default function ChangePasswordPage() {
   const [changing, setChanging] = useState<boolean>(false);
   const [password, setPassword] = useState<string>("");
   const [old, setOld] = useState<string>("");
@@ -87,5 +86,3 @@ const ChangePasswordPage: React.FunctionComponent<IPageProps> = (props) => {
     </div>
   );
 };
-
-export default ChangePasswordPage;

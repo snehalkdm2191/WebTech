@@ -1,0 +1,85 @@
+body {
+  background-color: #fff;
+}
+.Home-page {
+  background-color: #e8e8e4;
+  display: flex;
+  flex-direction: column;
+  font-family: "Teko", sans-serif;
+}
+.hero {
+  height: 100vh;
+  overflow: hidden;
+}
+.bloc{
+  margin: 0;
+  position: absolute;
+  top: 70%;
+  left: 48%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+.btn-signup{
+  margin-right: 2rem;
+}
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  object-fit: fill;
+}
+#home-content .home-work .image {
+  width: 100%;
+  object-fit: cover;
+}
+
+#home-content .home-work .home-work-text {
+  padding: 24px;
+}
+.home-work-text h1 {
+  font-family: "Teko", sans-serif;
+  color: #023047;
+  font-size: 30px;
+}
+.home-work-text p {
+  font-size: 20px;
+}
+
+.map-frame {
+  width: 50%;
+  height: auto;
+}
+
+@media (min-width: 550px) {
+  /* This move to a horizontal layout */
+  #home-content .home-work {
+    display: flex;
+    flex-direction: row;
+  }
+
+  /* This make each side 50% wide */
+  #home-content .home-work .image,
+  #home-content .home-work .home-work-text {
+    width: 50%;
+  }
+
+  /* Center the text   */
+  #home-content .home-work .home-work-text {
+    display: grid;
+    align-self: center;
+    justify-self: center;
+  }
+
+  /* Limit the text lenght */
+  #home-content .home-work .center {
+    margin: 0 auto;
+    max-width: 430px;
+  }
+
+  /* Alter the image location */
+  #home-content .home-work:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+}

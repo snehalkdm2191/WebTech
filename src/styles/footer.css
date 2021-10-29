@@ -1,0 +1,24 @@
+#Footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  color: #666;
+  text-align: center;
+}
+#Footer p {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 0rem;
+}
+.footer-links {
+  color: #fff;
+  margin-left: 3%;
+}
+.footer-links img {
+  height: 30px;
+}
+.copyright-text {
+  font-size: 11px;
+  margin-left: 3%;
+}

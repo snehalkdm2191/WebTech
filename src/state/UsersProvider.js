@@ -5,7 +5,10 @@
  */
 
 // NPM packages
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useReducer } from "react";
+
+//Project files
+import usersReducer from "./usersReducer";
 
 // Properties
 const UserContext = createContext(null);
@@ -18,9 +21,9 @@ export function UserProvider({ children }) {
     role: "student"
   });
   const [isLogged, setIsLogged] = useState(false);
-
+  const [users, dispatchUsers] = useReducer(usersReducer, []);
   return (
-    <UserContext.Provider value={{ user, setUser, isLogged, setIsLogged }}>
+    <UserContext.Provider value={{ user, setUser, isLogged, setIsLogged, users, dispatchUsers }}>
       {children}
     </UserContext.Provider>
   );

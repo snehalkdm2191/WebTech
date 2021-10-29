@@ -8,18 +8,17 @@ export default function InputField({ onChange, options, state }) {
   const inputReference = useRef(null);
 
   return (
-    <>
-      <label className={key}>
-        {label}
+    <div className="form-group">
+      <label className={key}>{label}</label>
         <input
           ref={inputReference}
           value={state}
           type={type}
+          className="form-control"
           placeholder={mode === "edit" ? state : placeholder}
           required={required}
           onChange={() => onChange(key, inputReference.current.value)}
         ></input>
-      </label>
-    </>
+    </div>
   );
 }

@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Teko&display=swap');
+
+@import url(./loginPage.css);
+@import url(./NavBar.css);
+@import url(./forgot.css);
+@import url(./home.css);
+@import url(./modal.css);
+@import url(./Teacher.css);
+@import url(./Student.css);
+@import url(./Profile.css);
+@import url(./Course.css);
+@import url(./card.css);
+@import url(./CreateForm.css);
+@import url(./footer.css);

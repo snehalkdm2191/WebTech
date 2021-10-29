@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import ErrorText from '../../components/ErrorText';
 import { auth, Providers } from '../../config/firebase';
 import logging from '../../config/logging';
-import IPageProps from '../../interfaces/page';
 
-const ForgotPasswordPage: React.FunctionComponent<IPageProps> = props => {
+export default function ForgotPasswordPage() {
     const [sending, setSending] = useState<boolean>(false);
     const [sent, setSent] = useState<boolean>(false);
     const [email, setEmail] = useState<string>('');
     const [error, setError] = useState<string>('');
+    const history = useHistory();
 
     const resetPasswordRequest = () => {
         if (error !== '') setError('');
@@ -29,7 +30,7 @@ const ForgotPasswordPage: React.FunctionComponent<IPageProps> = props => {
     }
 
     return (
-        <div id="SendPasswordReset">
+        <div id="SendPasswordReset" className="forgot-section">
             {sent ?
                 <p>A link has been sent to your email with instructions.</p>
             :
@@ -37,6 +38,7 @@ const ForgotPasswordPage: React.FunctionComponent<IPageProps> = props => {
                     <p>Please enter your email.</p>
                     <div className="form-group">
                         <input 
+                            className="form-control"
                             type="email"
                             name="email"
                             id="email"
@@ -45,7 +47,9 @@ const ForgotPasswordPage: React.FunctionComponent<IPageProps> = props => {
                             value={email}
                         />
                     </div>
+                    <button className="btn-logout-cancel" onClick={() => history.goBack()}>Cancel</button>
                     <button
+                    className="btn-forgot-section"
                         disabled={sending}
                         color="success"
                         onClick={() => resetPasswordRequest()}
@@ -58,5 +62,3 @@ const ForgotPasswordPage: React.FunctionComponent<IPageProps> = props => {
         </div>
     );
 }
-
-export default ForgotPasswordPage;

@@ -17,7 +17,7 @@ export default function CoursesList() {
 
   return (
     <>
-        <section className="cards">{Courses}</section>
+        <section className="row">{Courses}</section>
     </>
   );
 }

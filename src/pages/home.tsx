@@ -1,29 +1,26 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Card, CardBody, Container } from 'reactstrap';
-import IPageProps from '../interfaces/page';
-import { useUsers } from "../state/UsersProvider";
+import React from "react";
+import { Link } from "react-router-dom";
+import VideoPlayer from "../components/VideoPlayer";
+import HomeContent from "../components/HomeContent";
+import Footer from "../components/Footer";
 
-const HomePage: React.FunctionComponent<IPageProps> = props => {
-    const { user }:any = useUsers();
-    console.log("user",user);
-    return (
-        <Container>
-            <Card>
-                <CardBody>
-                    <p>
-                        Welcome to our page @<b>{user.role}</b>@
-                    </p>
-                    <p>
-                        Change your password <Link to="/change">here</Link>.
-                    </p>
-                    <p>
-                        Click <Link to='/logout'>here</Link> to logout.
-                    </p>
-                </CardBody>
-            </Card>
-        </Container>
-    );
+export default function home() {
+  return (
+    <div className="Home-page">
+      <div className="hero" id="hero">
+        <VideoPlayer/>
+
+        <div className="bloc">
+          <Link className="btn btn-light btn-signup" to="/register">
+            <h3>signup</h3>
+          </Link>
+          <Link className="btn btn-light btn-home-login" to="/login">
+            <h3>login</h3>
+          </Link>
+        </div>
+      </div>
+      <HomeContent/>
+      <Footer/>
+    </div>
+  );
 }
-
-export default HomePage;
