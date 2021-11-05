@@ -2,6 +2,7 @@ import LoginForm from "./login";
 import RegisterForm from "./register";
 import logo from "../../assets/img/logo.png";
 
+// Nesting -1 You need half of the divs you have here if you write your own modern CSS instead of using Bootstap, similar frameworks o even copying the techniques from other frameworks by hand.
 export default function loginMainPage() {
   return (
     <div className="row">

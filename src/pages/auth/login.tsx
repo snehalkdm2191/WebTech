@@ -15,7 +15,7 @@ export default function LoginPage() {
 
   const history = useHistory();
 
-  async function signInWithEmailAndPassword(){
+  async function signInWithEmailAndPassword() {
     if (error !== "") setError("");
 
     setAuthenticating(true);
@@ -31,7 +31,7 @@ export default function LoginPage() {
         setAuthenticating(false);
         setError(error.message);
       });
-  };
+  }
 
   async function onSuccess(uid: string) {
     const document = await getDocument("users", uid);
@@ -43,7 +43,7 @@ export default function LoginPage() {
   return (
     <div className="login">
       <div className="form-group">
-      <label htmlFor="email">Email address</label>
+        <label htmlFor="email">Email address</label>
         <input
           type="email"
           name="email"
@@ -55,7 +55,7 @@ export default function LoginPage() {
         />
       </div>
       <div className="form-group">
-      <label htmlFor="password">Password</label>
+        <label htmlFor="password">Password</label>
         <input
           autoComplete="new-password"
           type="password"
@@ -80,7 +80,7 @@ export default function LoginPage() {
           Don't have an account? <label htmlFor="tab-2">Register here..</label>
         </p>
         <p className="m-1 text-center">
-        <Link to="/forget">Forget your password?</Link>
+          <Link to="/forget">Forget your password?</Link>
         </p>
       </small>
       <ErrorText error={error} />

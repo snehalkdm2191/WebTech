@@ -24,7 +24,7 @@ export default function ChangePasswordPage() {
     setChanging(true);
 
     if (auth.currentUser !== null) {
-        Providers.reset(auth.currentUser, password)
+      Providers.reset(auth.currentUser, password)
         .then(() => {
           logging.info("Password change successful.");
           history.push("/");
@@ -85,4 +85,4 @@ export default function ChangePasswordPage() {
       <ErrorText error={error} />
     </div>
   );
-};
+}

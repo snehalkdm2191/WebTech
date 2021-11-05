@@ -37,7 +37,20 @@ export default function App() {
   return (
     <div>
       <BrowserRouter>
-        <Switch>{isLogged ? <div><Navbar/> <Logged /></div>: <Unlogged />}</Switch>
+        <Switch>
+          {/* Refactorability: Code hierarchy -1 */}
+          {/* Remember when the Prettier plugin format our code weirdly in this case in a vertical fashion when it should be 1 line, */}
+          {/* It's a sign that something is wrong. In this case, isLogged should either one component or another, not multiple JSX tags */}
+          {/* The solution is to return logged and put the navbar there */}
+          {/* Better still, you can create a special component called Page that alwatys include the Navbar and use as a base for other pages */}
+          {isLogged ? (
+            <div>
+              <Navbar /> <Logged />
+            </div>
+          ) : (
+            <Unlogged />
+          )}
+        </Switch>
       </BrowserRouter>
     </div>
   );

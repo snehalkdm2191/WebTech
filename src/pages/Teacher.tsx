@@ -16,6 +16,7 @@ export default function Teacher() {
     <section id="tabs">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
+          {/* Same as student, you could have refactor this component to TabButton and pass and json with the necceary properties -1 */}
           <button
             class="nav-link active"
             id="home-tab"

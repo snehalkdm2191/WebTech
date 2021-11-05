@@ -4,11 +4,12 @@ import VideoPlayer from "../components/VideoPlayer";
 import HomeContent from "../components/HomeContent";
 import Footer from "../components/Footer";
 
+// Naming: This should be uppercase Home to distinguish a React component to a normal variable. -1
 export default function home() {
   return (
     <div className="Home-page">
       <div className="hero" id="hero">
-        <VideoPlayer/>
+        <VideoPlayer />
 
         <div className="bloc">
           <Link className="btn btn-light btn-signup" to="/login">
@@ -19,8 +20,8 @@ export default function home() {
           </Link>
         </div>
       </div>
-      <HomeContent/>
-      <Footer/>
+      <HomeContent />
+      <Footer />
     </div>
   );
 }

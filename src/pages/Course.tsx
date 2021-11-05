@@ -5,7 +5,7 @@ import { useParams, Link } from "react-router-dom";
 //Local imports
 import { useCourses } from "../state/CoursesProvider";
 import useFetch from "../scripts/useFetch";
-import blankImg from "../assets/img/image-placeholder.png"
+import blankImg from "../assets/img/image-placeholder.png";
 
 export default function Course() {
   //Local state
@@ -17,6 +17,7 @@ export default function Course() {
 
   console.log("id", id);
 
+  // Nesting -1 You need half of the divs you have here if you write your own modern CSS instead of using Bootstap, similar frameworks o even copying the techniques from other frameworks by hand.
   return (
     <div className="container view-course-container">
       {(!courses.loading && courses.error) === null && (

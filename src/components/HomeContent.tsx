@@ -47,10 +47,15 @@ export default function HomeContent() {
               touch with us.
             </p>
             <a href="mailto:snehalkdm2191@gmail.com">
-              <h5><i className="fas fa-envelope-open-text" /> snehalkdm2191@gmail.com</h5>
+              <h5>
+                <i className="fas fa-envelope-open-text" />{" "}
+                snehalkdm2191@gmail.com
+              </h5>
             </a>
             <a href="mailto:snehalkdm2191@gmail.com">
-              <h5><i className="fas fa-mobile-alt" /> +46-735831881</h5>
+              <h5>
+                <i className="fas fa-mobile-alt" /> +46-735831881
+              </h5>
             </a>
           </div>
         </div>

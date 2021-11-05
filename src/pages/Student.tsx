@@ -2,12 +2,14 @@
 import CoursesList from "../components/CoursesList";
 import Profile from "../pages/Profile";
 
+// Component is too long (60+ lines)
 export default function Student() {
-
   return (
     <section id="tabs">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
+          {/* What is data-bs-toggle, data-bs-target, role, etc. */}
+          {/* There is better ways to do tabs in React */}
           <button
             class="nav-link active"
             id="home-tab"
